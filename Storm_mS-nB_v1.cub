@@ -255,7 +255,7 @@ requires { 0.0<C && CanTimeElapse=True}
 	P[j, z]             := case
 				|  B[j, z] = X  &&  0.0 <= P[j, z]-C: P[j, z]-C
 				|  B[j, z] <> X                     : P[j, z]
-				|  B[j, z] =  X && P[j, z]- (* 10 * *) C (* *Execrate*) < 0.0  : 0.0;
+				|  B[j, z] =  X && P[j, z]- C < 0.0  : 0.0;
 	Stime[j, z]         := case | _: Stime[j, z] + C;
 	BEmitTakeTime[j, z] := case | _: BEmitTakeTime[j, z]+C;
 	CanTimeElapse       := False;
