@@ -195,18 +195,13 @@ requires { C >0.0 && S[i,x]=E && Tsmin<Stime[i,x]+C && Stime[i,x]+C<Tsmax && L[j
 
 (* a bolt emits *)
 transition t3(x y i j)
-requires { (* C>0.0 && *)D>0.0 && B[i, x]=E && L[j,y]+D <= Lenmax[j] && SubscribedBB[j,i] = True}
+requires { D>0.0 && B[i, x]=E && L[j,y]+D <= Lenmax[j] && SubscribedBB[j,i] = True}
 {
     (* T := T+C;*)
     Statechange := True;
     L[l, z] := case
 	| z = y && l = j : L[l, z] + D
         | _ : L[l, z];
-    (* P[l, z] := case 
-		| B[l, z] = X && 0.0 <= P[l, z]-C : P[l, z]-C
-                | B[l, z] <> X                    : P[l, z]
-                | B[l, z] =  X && P[l, z]-C < 0.0 : 0.0;
-    Stime[l, z] := case |  _  : Stime[l, z] + C; *)
     CanTimeElapse := True;
 }
 
@@ -218,7 +213,7 @@ requires { D>0.0 && B[j, y] = K && D=Taken[j, y] && D<= L[j, y]}
 		| z = y && l = j : X
 		| _ : B[l, z];  
 	L[l, z] := case 
-		| z = y && l = j : L[l, z] - D (*Taken[j,y]*)
+		| z = y && l = j : L[l, z] - D
 		| _ : L[l, z]; 
 	P[l, z] := case 
 		| z = y && l = j : Taken[l, z]
@@ -255,7 +250,7 @@ requires { 0.0<C && CanTimeElapse=True}
 	P[j, z]             := case
 				|  B[j, z] = X  &&  0.0 <= P[j, z]-C: P[j, z]-C
 				|  B[j, z] <> X                     : P[j, z]
-				|  B[j, z] =  X && P[j, z]- (* 10 * *) C (* *Execrate*) < 0.0  : 0.0;
+				|  B[j, z] =  X && P[j, z]- C < 0.0  : 0.0;
 	Stime[j, z]         := case | _: Stime[j, z] + C;
 	BEmitTakeTime[j, z] := case | _: BEmitTakeTime[j, z]+C;
 	CanTimeElapse       := False;
