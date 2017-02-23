@@ -1,0 +1,286 @@
+(* 
+Accompanying file for SPIN2017 -> Section 5 -> we check if it exists i s.t. i=1 &&L[i] > 1.5 which is the same as i=1 &&L[i] > 2 since we increment/decrement the queue with 1.
+*)
+
+(* idle = I, emit = E, execute = X, take = K
+Assume: Execrate=1
+*)
+
+type state = I | E | X 
+type flag = DT | DE | No
+
+(*First letter should be upper case*)
+array B[proc,proc] : state
+array L[proc] : real
+array P[proc,proc] : real
+array Stime[proc] : real
+array SubscribedBS[proc, proc]: bool
+array SubscribedBB[proc, proc]: bool
+array TAKE_MAX[proc]: proc
+
+var T: real
+
+(* Flags to guide the executions *)
+var CanTimeElapse: bool
+var DoTake: bool
+var DoEmit: bool
+var SetFlags: flag
+
+
+var Zero: proc
+var One: proc
+var Two: proc
+
+(* Temporal constants of spouts *)
+const Tsmin: real
+(* const Tsmax: real *)
+var C: real
+
+(* initial configuration *)
+init (i x) { 
+	T = 0.0 && B[i,x]=I && L[i]=0.0 && P[i,x]=0.0 && Stime[i]=0.0 && CanTimeElapse=True && DoTake=False && DoEmit=False && SetFlags=No && 0<TAKE_MAX[i] && Zero=0 && One=1 && Two=2 && Tsmin=0.8 (* && Tsmax=1.8 *)
+}
+
+(* invariant; negated invariants! *)
+(* since we compare Tsmin and Lenmax they should have the same type *)
+
+(* invariant()   { not ( Tsmax>Tsmin ) }
+invariant()   { not ( Tsmax=1.8 ) } *)
+invariant()   { not ( Tsmin=0.8 ) }
+
+
+(* The topology: from D3.5; 2 spouts, 3 bolts; see also 2016_01_28.tex *)
+(* B0 subscribed to S0 *)
+(* B1 subscribed to S0 and S1 *)
+(* B2 subscribed to B0 and B1 *)
+
+(* SubscribedBS *)
+invariant(i j){ not ( i=0 && j=0  => SubscribedBS[i,j] = True ) }
+invariant(i j){ not ( i=0 && j>=1 => SubscribedBS[i,j] = False ) }
+invariant(i j){ not ( i=1 && j=0 => SubscribedBS[i,j] = True ) }
+invariant(i j){ not ( i=1 && j=1  => SubscribedBS[i,j] = True ) }
+invariant(i j){ not ( i=1 && j>=2 => SubscribedBS[i,j] = False ) }
+
+invariant(i j){ not ( i>=2        => SubscribedBS[i,j] = False ) }
+invariant(i j){ not ( i<0        => SubscribedBS[i,j] = False ) } 
+invariant(i j){ not ( j<0        => SubscribedBS[i,j] = False ) } 
+invariant(i j){ not ( j>1         => SubscribedBS[i,j] = False ) } 
+
+
+(* SubscribedBB *)
+invariant(i j){ not ( i=0       => SubscribedBB[i,j] = False ) }
+invariant(i j){ not ( i=1        => SubscribedBB[i,j] = False ) }
+invariant(i j){ not ( i=2 && j=0 => SubscribedBB[i,j] = True ) }
+invariant(i j){ not ( i=2 && j=1 => SubscribedBB[i,j] = True ) }
+invariant(i j){ not ( i>2        => SubscribedBB[i,j] = False ) }
+
+invariant(i j){ not ( i<0       => SubscribedBB[i,j] = False ) }
+invariant(i j){ not ( i>2        => SubscribedBB[i,j] = False ) }
+invariant(i j){ not ( j<0       => SubscribedBB[i,j] = False ) }
+invariant(i j){ not ( j>2        => SubscribedBB[i,j] = False ) }
+
+
+(* all the spouts not included in the topology are idle *)
+invariant(i)  { not ( i>1 => Stime[i] = 0.0 )}
+invariant(i)  { not ( i<0 => Stime[i] = 0.0 )}
+
+(* all the bolts not included in the topology are idle and their queues empty *)
+invariant(i x){ not ( i>2 => (B[i, x] = I && L[i] = 0.0 && P[i, x] = 0.0) )}
+invariant(i x){ not ( i<0 => (B[i, x] = I && L[i] = 0.0 && P[i, x] = 0.0) )}
+
+(* all the processes that are not instantiated are idle *)
+(* proceses from Zeroto TAKE_MAX-1*)
+invariant(i x){ not ( x >= TAKE_MAX[i] => (B[i, x] = I && L[i] = 0.0 && P[i, x] = 0.0) ) }
+invariant(i x){ not ( x < 0          => (B[i, x] = I && L[i] = 0.0 && P[i, x] = 0.0) ) }
+
+(* all queues cannot be partitioned below 1 *)
+invariant(i){ not ( L[i]>0.0 =>  L[i]>=1.0) } 
+
+(* Processed is always between Zeroand 1 *)
+invariant(i x){ not ( 0.0<=P[i,x] && P[i,x]<=1.0) } 
+
+invariant(i x){ not ( P[i,x]>0.0 => B[i,x]=X ) } 
+
+
+invariant(i){ not (0<TAKE_MAX[i]) }
+
+(* boundedness *)
+(* invariant (i){ not ( L[i]<=5.0 ) } *)
+invariant(i){ not ( L[i]>=0.0 ) }
+invariant(i x){ not ( P[i,x]>=0.0 ) }
+invariant(i){ not ( Stime[i]>=0.0 ) }
+
+
+invariant(){ not (Zero = 0) }
+invariant(){ not (One = 1)}
+invariant(){ not (Two = 2) }
+
+
+(* unsafe states *)
+(* unsafe(i x){ L[i]>2.5 && i=One } --> out of memory *)
+
+unsafe(i){ L[i]>1.5 && i=One }
+
+
+(*******************************)
+(****** FLAG TRANSITIONS *******)
+(*******************************)
+
+
+(* FLAG DOTAKE *)
+
+transition setDoTake_T (i x)
+requires { SetFlags=DT && i=One && Zero<=x && x<TAKE_MAX[i] && 
+	   L[i]>0.0 && B[i,x]=I }
+{
+	DoTake := True; 						(* Set the flag *)
+	SetFlags := DE;
+}
+transition setDoTake_F1 (j)
+requires { SetFlags=DT && j=One && L[j]=0.0 } 
+{
+	DoTake := False; 						(* Set the flag *)
+	SetFlags := DE;
+}
+transition setDoTake_F2 (j)
+requires { SetFlags=DT && j=One && 
+	   L[j]>0.0 && forall_other y. ( y<Zero || TAKE_MAX[j]<=y || B[j,y]<>I ) &&
+	   (* General form commented out as for j=One (j<Zero || TAKE_MAX[j]<=j || B[j,j]<>I) reduce to what follows *)
+	   j<TAKE_MAX[j] && B[j,j]<>I } 
+{
+	DoTake := False; 						(* Set the flag *)
+	SetFlags := DE;
+}
+transition setDoTake_F2a (j x)
+requires { SetFlags=DT && j=One && TAKE_MAX[j]<=j && x=Zero && B[j,x]<>I &&
+	   L[j]>0.0 && forall_other y. ( y<Zero || TAKE_MAX[j]<=y || B[j,y]<>I ) }
+	   (* General form commented out as for j=One (j<Zero || TAKE_MAX[j]<=j || B[j,j]<>I) reduce to what follows *)
+	   
+{
+	DoTake := False; 						(* Set the flag *)
+	SetFlags := DE;
+}
+
+(* FLAG DOEMIT *)
+
+transition setDoEmit_T (i x)
+requires { SetFlags=DE && i=One && Zero<=x && x<TAKE_MAX[i] && 
+	   B[i,x]=E }
+{
+	DoEmit := True; 						(* Set the flag *)
+	SetFlags := No 
+}
+transition setDoEmit_F1 (j)
+requires { SetFlags=DE && j=One &&
+	   forall_other y. ( y<Zero || TAKE_MAX[j]<=y || B[j,y]<>E ) &&
+	   (* General form commented out ( j<Zero || TAKE_MAX[j]<=j || B[j,j]<>E ) } *)
+	   j<TAKE_MAX[j] && B[j,j]<>E }
+{
+	DoEmit := False; 						(* Set the flag *)
+	SetFlags := No
+}
+transition setDoEmit_F1a (j x)
+requires { SetFlags=DE && j=One && TAKE_MAX[j]<=j && x=Zero && B[j,x]<>E &&
+	   forall_other y. ( y<Zero || TAKE_MAX[j]<=y || B[j,y]<>E ) 
+	   (* General form commented out ( j<Zero || TAKE_MAX[j]<=j || B[j,j]<>E ) } *)
+	   }
+{
+	DoEmit := False; 						(* Set the flag *)
+	SetFlags := No
+}
+
+
+
+(********************************
+******* SYSTEM TRANSITIONS ******
+*********************************)
+
+(* a spout emits *)
+transition spout_emit(i j)
+requires { Tsmin<Stime[i] && SubscribedBS[j,i] = True && DoEmit=False && DoTake=False && SetFlags=No }
+{ 
+	L[l] := case 
+		| l = j : L[l] + 1.0
+		| _ : L[l];
+	Stime[l] := case
+		| l = i : 0.0
+		| _ : Stime[l];
+	CanTimeElapse := True;
+	SetFlags := DT;
+}
+(* a bolt emits then change to either take or idle *)
+transition bolt_1_emit(x i j)
+requires { B[i,x]=E && SubscribedBB[j,i] = True && Zero<=x && x<TAKE_MAX[i] && DoEmit=True && SetFlags=No && i=One }
+{
+   	L[l] := case
+		| l = j : L[l] + 1.0
+        	| _ : L[l];
+    	B[l, z] := case 
+	       | z = x && l = i : I  
+	       | _ : B[l, z];
+   	CanTimeElapse := True;
+	SetFlags := DT;
+}
+transition bolt_0_2_emit(x i j)
+requires { B[i,x]=E && SubscribedBB[j,i] = True && Zero<=x && x<TAKE_MAX[i] && SetFlags=No && i<>One }
+{
+   	L[l] := case
+		| l = j : L[l] + 1.0
+        	| _ : L[l];
+    	B[l, z] := case 
+	       | z = x && l = i : I  
+	       | _ : B[l, z];
+   	CanTimeElapse := True;
+	SetFlags := DT;
+}
+(* a bolt takes *)
+transition bolt_1_take(j y)
+requires { B[j,y]=I && L[j]>=1.0 && Zero<=y && y<TAKE_MAX[j] && DoTake=True && SetFlags=No && j=One }
+{
+	B[l, z] := case
+		| z = y && l = j : X
+		| _ : B[l, z];
+	L[l] := case
+		| l = j : L[l] - 1.0
+		| _ : L[l];
+	P[l, z] := case
+		| z = y && l = j : 1.0
+		| _ : P[l, z];
+	CanTimeElapse := True;
+	SetFlags := DT;
+}
+transition bolt_0_2take(j y)
+requires { B[j,y]=I && L[j]>=1.0 && Zero<=y && y<TAKE_MAX[j] && SetFlags=No &&  j<>One }
+{
+	B[l, z] := case
+		| z = y && l = j : X
+		| _ : B[l, z];
+	L[l] := case
+		| l = j : L[l] - 1.0
+		| _ : L[l];
+	P[l, z] := case
+		| z = y && l = j : 1.0
+		| _ : P[l, z];
+	CanTimeElapse := True;
+	SetFlags := DT;
+}
+(* time elapse *)
+transition time_elapse()
+requires { 0.0<C && CanTimeElapse=True }
+{ 
+	T                   := T+C;
+	P[j, z]             := case
+ 				(* | P[j,z]>0.0 && B[j,z]=X && j=Zero && Zero<=z && z<TAKE_MAX[j] && 0.0 <= P[j,z]-C: P[j,z] - C *)
+				(* | P[j,z]>0.0 && B[j,z]=X && j=One && Zero<=z && z<TAKE_MAX[j] && 0.0 <= P[j,z]-C: P[j,z] - C *)
+				(* | P[j,z]>0.0 && B[j,z]=X && j=Two && Zero<=z && z<TAKE_MAX[j] && 0.0 <= P[j,z]-C: P[j,z] - C *)
+				| 0.0 <= P[j,z]-C : P[j,z]-C
+				|  _ : 0.0;
+        B[j, z]             := case
+                                | B[j,z]=X && j=Zero && Zero<=z && z<TAKE_MAX[j] && P[j,z] <= C : E
+                                | B[j,z]=X && j=One && Zero<=z && z<TAKE_MAX[j] && P[j,z] <= C : E
+                                | B[j,z]=X && j=Two && Zero<=z && z<TAKE_MAX[j] && P[j,z] <= C : I
+                                | _ : B[j,z];
+	Stime[j]            := case | _: Stime[j] + C;
+	CanTimeElapse       := False;
+	SetFlags	    := DT;
+}

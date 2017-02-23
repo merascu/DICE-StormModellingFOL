@@ -1,0 +1,277 @@
+node 1: unsafe[45]
+                                                                                                                                                                          18 (4+14) remaining
+
+node 2: spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                           12 (9+3) remaining
+
+node 3: setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                            8 (5+3) remaining
+
+node 4: setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                            9 (6+3) remaining
+
+node 5: setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                         43 (18+25) remaining
+
+node 6: setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                         71 (24+47) remaining
+
+node 7: time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                         94 (23+71) remaining
+
+node 8: bolt_0_2take(#2, #1) -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                         95 (23+72) remaining
+
+node 9: time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        121 (25+96) remaining
+
+node 10: bolt_0_2take(#2, #1) -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        120 (23+97) remaining
+
+node 11: spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        114 (17+97) remaining
+
+node 12: bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        116 (18+98) remaining
+
+node 13: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        117 (18+99) remaining
+
+node 14: spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                        114 (15+99) remaining
+
+node 15: bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       114 (14+100) remaining
+
+node 16: setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       115 (14+101) remaining
+
+node 17: setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       116 (15+101) remaining
+
+node 18: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       118 (16+102) remaining
+
+node 19: setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       115 (13+102) remaining
+
+node 20: setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       117 (14+103) remaining
+
+node 21: setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       152 (27+125) remaining
+
+node 22: setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       186 (39+147) remaining
+
+node 23: setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       215 (46+169) remaining
+
+node 24: setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       241 (50+191) remaining
+
+node 25: bolt_0_2take(#2, #1) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       230 (38+192) remaining
+
+node 26: bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       231 (38+193) remaining
+
+node 27: time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       252 (35+217) remaining
+
+node 28: bolt_0_2take(#2, #1) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) ->
+         unsafe[45]
+                                                                                                                                                                       241 (23+218) remaining
+
+node 29: bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) ->
+         unsafe[45]
+                                                                                                                                                                       242 (23+219) remaining
+
+node 30: time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) ->
+         unsafe[45]
+                                                                                                                                                                       268 (25+243) remaining
+
+node 31: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       267 (23+244) remaining
+
+node 32: setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       268 (23+245) remaining
+
+node 33: spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       263 (18+245) remaining
+
+node 34: setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       263 (17+246) remaining
+
+node 35: setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       264 (17+247) remaining
+
+node 36: spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) ->
+         spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       261 (14+247) remaining
+
+node 37: setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) ->
+         setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       283 (13+270) remaining
+
+node 38: setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       284 (14+270) remaining
+
+node 39: setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       308 (15+293) remaining
+
+node 40: setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       309 (16+293) remaining
+
+node 41: time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       339 (21+318) remaining
+
+node 42: bolt_0_2take(#2, #1) -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       338 (18+320) remaining
+
+node 43: setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) ->
+         setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       378 (36+342) remaining
+
+node 44: time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       405 (38+367) remaining
+
+node 45: bolt_0_2take(#2, #1) -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       405 (37+368) remaining
+
+node 46: setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() ->
+         setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       433 (43+390) remaining
+
+node 47: spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) ->
+         time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       429 (39+390) remaining
+
+node 48: bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) ->
+         time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       431 (39+392) remaining
+
+node 49: bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) ->
+         time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       414 (20+394) remaining
+
+node 50: spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) ->
+         time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       411 (17+394) remaining
+
+node 51: bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) ->
+         time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       412 (17+395) remaining
+
+node 52: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) ->
+         spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       414 (18+396) remaining
+
+node 53: bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) ->
+         bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       409 (12+397) remaining
+
+node 54: setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       409 (12+397) remaining
+
+node 55: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) ->
+         spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       411 (13+398) remaining
+
+node 56: setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) ->
+         bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       411 (12+399) remaining
+
+node 57: setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) ->
+         spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       410 (11+399) remaining
+
+node 58: setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) ->
+         spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       412 (12+400) remaining
+
+node 59: setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       414 (13+401) remaining
+
+node 60: setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) ->
+         bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       413 (11+402) remaining
+
+node 61: setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       414 (11+403) remaining
+
+node 62: setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) ->
+         setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       442 (16+426) remaining
+
+node 63: setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) ->
+         setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       473 (24+449) remaining
+
+node 64: setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) ->
+         setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       505 (33+472) remaining
+
+node 65: setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       531 (36+495) remaining
+
+node 66: setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) ->
+         setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       553 (35+518) remaining
+
+node 67: setDoTake_T(#1, #2) -> setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) ->
+         setDoEmit_F1a(#1, #2) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       577 (36+541) remaining
+
+node 68: time_elapse() -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) ->
+         setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       607 (41+566) remaining
+
+node 69: bolt_0_2take(#2, #1) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) ->
+         setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       606 (38+568) remaining
+
+node 70: time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       627 (33+594) remaining
+
+node 71: time_elapse() -> setDoTake_T(#1, #2) -> setDoEmit_F1(#1) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> time_elapse() ->
+         setDoTake_F2(#1) -> setDoEmit_F1(#1) -> bolt_0_2take(#2, #1) -> time_elapse() -> setDoTake_F2(#1) -> setDoEmit_F1(#1) -> spout_emit(#2, #1) -> unsafe[45]
+                                                                                                                                                                       656 (36+620) remaining
+
+=============================================================================================================================================================================================
+* STATS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Number of visited nodes          : 71
+Fixpoints                        : 221
+Number of solver calls           : 7644
+Max Number of processes          : 2
+Number of deleted nodes          : 2
+Restarts                         : 0
+=============================================================================================================================================================================================
+
+Error trace: Init -> time_elapse() -> setDoTake_F1(#1) -> setDoEmit_F1a(#1, #2) -> 
+             spout_emit(#2, #1) -> time_elapse() -> setDoTake_T(#1, #2) -> 
+             setDoEmit_F1a(#1, #2) -> bolt_1_take(#1, #2) -> setDoTake_F1(#1) -> 
+             setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> time_elapse() -> 
+             setDoTake_F2a(#1, #2) -> setDoEmit_F1a(#1, #2) -> spout_emit(#2, #1) -> unsafe[45]
+
+
+UNSAFE !
+
